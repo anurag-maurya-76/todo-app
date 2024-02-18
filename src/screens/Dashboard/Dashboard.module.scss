@@ -1,31 +1,7 @@
 .dashboard {
    width: 100%;
+   height: 100%;
    margin: 0 auto;
-
-   &__header {
-      display: flex;
-      justify-content: center;
-
-   }
-
-   &__expanded {
-      right: 0px;
-      left: 0px;
-      background: #8585855e;
-      top: 0px;
-      position: fixed;
-   }
-
-   &__collapsed {
-      position: relative;
-   }
-
-
-
-   &__taskList {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
-      grid-gap: 20px;
-   }
-
+   display: grid;
+   grid-template-columns: 25% 75%;
 }
