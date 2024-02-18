@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./TaskCard.module.scss";
-import formatter from "../../utils.js/formatter";
+import formatter from "../../utils/formatter";
 
 const TaskCard = React.forwardRef(({ task }, ref) => {
   return (
