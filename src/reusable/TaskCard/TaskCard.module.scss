@@ -1,0 +1,52 @@
+.taskCard {
+   background-color: #252525;
+   border-radius: 8px;
+   padding: 20px;
+
+   &__header {
+      font-size: 20px;
+      font-weight: bold;
+      color: #fff;
+      margin-bottom: 10px;
+   }
+
+   &__description {
+      font-size: 16px;
+      color: #666666;
+      margin-bottom: 10px;
+   }
+
+   &__dueDate {
+      font-size: 14px;
+      color: #999999;
+   }
+
+   &__footer {
+      margin-top: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      &__status {
+         font-size: 14px;
+         color: #999999;
+      }
+
+      &__actions {
+         display: flex;
+
+         button {
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+            margin-left: 5px;
+            font-size: 14px;
+            color: #007bff;
+
+            &:hover {
+               text-decoration: underline;
+            }
+         }
+      }
+   }
+}
