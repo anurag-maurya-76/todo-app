@@ -1,16 +1,17 @@
 import React from "react";
 import styles from "./TaskCard.module.scss";
+import formatter from "../../utils.js/formatter";
 
-const TaskCard = React.forwardRef((props, ref) => {
+const TaskCard = React.forwardRef(({ task }, ref) => {
   return (
     <div className={styles.taskCard} ref={ref}>
-      <div className={styles.taskCard__header}>Task 1</div>
-      <div className={styles.taskCard__description}>
-        I want to do this task tomorrow, so I won't start today
+      <div className={styles.taskCard__header}>{task.name}</div>
+      <div className={styles.taskCard__description}>{task.desc}</div>
+      <div className={styles.taskCard__dueDate}>
+        {formatter.date(task.date).formattedDate}
       </div>
-      <div className={styles.taskCard__dueDate}>8th Feb, 2023</div>
       <div className={styles.taskCard__footer}>
-        <div className={styles.taskCard__footer__status}>Pending</div>
+        <div className={styles.taskCard__footer__status}>{task.status}</div>
         <div className={styles.taskCard__footer__actions}>
           <button>Mark as Completed</button>
         </div>

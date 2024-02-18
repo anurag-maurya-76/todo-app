@@ -1,8 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./TaskList.module.scss";
 import TaskCard from "../../reusable/TaskCard";
+import AddTask from "../AddTask";
 
 const TaskList = () => {
+  const [taskList, setTaskList] = useState([
+    {
+      name: "First Task",
+      desc: "I need to complete it by today",
+      date: new Date(),
+      status: "Pending",
+    },
+  ]);
   return (
     <div className={styles.taskList}>
       <div className={styles.taskList__header}>
@@ -13,8 +22,9 @@ const TaskList = () => {
         </div>
       </div>
       <div className={styles.taskList__body}>
-        {[1, 2, 3, 4].map((value, key) => {
-          return <TaskCard />;
+        <AddTask setTaskList={setTaskList} />
+        {taskList.map((task, key) => {
+          return <TaskCard task={task} key={key} />;
         })}
       </div>
     </div>
