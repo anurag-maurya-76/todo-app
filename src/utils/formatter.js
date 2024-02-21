@@ -22,6 +22,23 @@ class Formatter {
     const formattedDate = dd + ", " + month[mm] + " " + yyyy;
     return { formattedDate };
   }
+  getDay(index) {
+    if (index === 0) {
+      return "M";
+    } else if (index === 1) {
+      return "T";
+    } else if (index === 2) {
+      return "W";
+    } else if (index === 3) {
+      return "T";
+    } else if (index === 4) {
+      return "F";
+    } else if (index === 5) {
+      return "S";
+    } else if (index === 6) {
+      return "S";
+    }
+  }
 }
 
 const formatter = new Formatter();
