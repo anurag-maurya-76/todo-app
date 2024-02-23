@@ -2,6 +2,8 @@ import { motion } from "framer-motion";
 import React, { useState } from "react";
 import styles from "./AddTask.module.scss";
 import { IoMdClose } from "react-icons/io";
+import { useDispatch } from "react-redux";
+import { addTask } from "../../state/slice/taskListSlice";
 const initialFormState = {
   name: {
     value: "",
@@ -12,7 +14,9 @@ const initialFormState = {
     error: "",
   },
 };
-const AddTask = ({ setTaskList }) => {
+const AddTask = () => {
+  const dispatch = useDispatch();
+
   const [formState, setFormState] = useState(initialFormState);
 
   const handleFormDispatch = (payload) => {
@@ -70,15 +74,15 @@ const AddTask = ({ setTaskList }) => {
       });
       return;
     }
-    setTaskList((state) => [
-      ...state,
-      {
+    dispatch(
+      addTask({
+        taskId: "1",
         name: formState.name.value,
         desc: formState.desc.value,
         date: new Date(),
         status: "Pending",
-      },
-    ]);
+      })
+    );
     handleFormDispatch(initialFormState);
     setOpen(false);
   };
@@ -91,7 +95,7 @@ const AddTask = ({ setTaskList }) => {
       style={{ cursor: open ? "" : "pointer" }}
       animate={{
         height: open ? 300 : 50,
-        width: open ? 600 : 100,
+        width: open ? "100%" : 150,
       }}
     >
       {open ? (

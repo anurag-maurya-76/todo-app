@@ -36,18 +36,19 @@
       &__actions {
          display: flex;
 
-         button {
-            border: none;
-            background-color: transparent;
-            cursor: pointer;
-            margin-left: 5px;
-            font-size: 14px;
-            color: #007bff;
+      }
+   }
 
-            &:hover {
-               text-decoration: underline;
-            }
-         }
+   &__button {
+      border: none;
+      background-color: transparent;
+      cursor: pointer;
+      margin-left: 5px;
+      font-size: 14px;
+      color: #007bff;
+
+      &:hover {
+         text-decoration: underline;
       }
    }
 }

@@ -1,19 +1,16 @@
 import React, { useState } from "react";
+
 import styles from "./TaskList.module.scss";
 import TaskCard from "../../reusable/TaskCard";
 import AddTask from "../AddTask";
 import formatter from "../../utils/formatter";
 import { greeter } from "../../utils/greeter";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../../state/store";
+import { addTask } from "../../state/slice/taskListSlice";
 
 const TaskList = () => {
-  const [taskList, setTaskList] = useState([
-    {
-      name: "First Task",
-      desc: "I need to complete it by today",
-      date: new Date(),
-      status: "Pending",
-    },
-  ]);
+  const taskList = useSelector((state: RootState) => state.taskList);
   return (
     <div className={styles.taskList}>
       <div className={styles.taskList__header}>
@@ -26,7 +23,7 @@ const TaskList = () => {
         </div>
       </div>
       <div className={styles.taskList__body}>
-        <AddTask setTaskList={setTaskList} />
+        <AddTask />
         {taskList.map((task, key) => {
           return <TaskCard task={task} key={key} />;
         })}

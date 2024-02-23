@@ -1,8 +1,8 @@
 import React from "react";
 import styles from "./Dashboard.module.scss";
-import TaskList from "../../components/TaskList";
 import TaskMap from "../../components/TaskMap";
 import TaskCalendar from "../../components/TaskCalendar";
+import TaskList from "../../components/TaskList";
 
 const Dashboard = () => {
   return (
