@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import styles from "./AddTask.module.scss";
 import { IoMdClose } from "react-icons/io";
 import { useDispatch } from "react-redux";
-import { addTask } from "../../state/slice/taskListSlice";
+import { taskAction } from "../../state/slice/taskListSlice";
 const initialFormState = {
   name: {
     value: "",
@@ -75,7 +75,7 @@ const AddTask = () => {
       return;
     }
     dispatch(
-      addTask({
+      taskAction.updateTask({
         taskId: "1",
         name: formState.name.value,
         desc: formState.desc.value,

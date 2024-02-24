@@ -37,6 +37,8 @@ class Formatter {
       return "S";
     } else if (index === 6) {
       return "S";
+    } else {
+      return "";
     }
   }
 }

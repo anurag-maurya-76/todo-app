@@ -1,13 +1,10 @@
-import React, { useState } from "react";
-
 import styles from "./TaskList.module.scss";
 import TaskCard from "../../reusable/TaskCard";
 import AddTask from "../AddTask";
 import formatter from "../../utils/formatter";
 import { greeter } from "../../utils/greeter";
-import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "../../state/store";
-import { addTask } from "../../state/slice/taskListSlice";
+import { useSelector } from "react-redux";
+import { RootState } from "../../state/store";
 
 const TaskList = () => {
   const taskList = useSelector((state: RootState) => state.taskList);

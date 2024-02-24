@@ -52,5 +52,5 @@ const taskListSlice = createSlice({
     },
   },
 });
-export const { addTask, updateTask, updateStatus } = taskListSlice.actions;
+export const taskAction = taskListSlice.actions;
 export const taskListReducer = taskListSlice.reducer;

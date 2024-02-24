@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./TaskCard.module.scss";
 import formatter from "../../utils/formatter";
-import { Task, updateStatus } from "../../state/slice/taskListSlice";
+import { Task, taskAction } from "../../state/slice/taskListSlice";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../state/store";
 
@@ -22,7 +22,10 @@ const TaskCard = ({ task }: { task: Task }) => {
           className={styles.taskCard__button}
           onClick={() => {
             dispatch(
-              updateStatus({ taskId: task.taskId, status: "Completed" })
+              taskAction.updateStatus({
+                taskId: task.taskId,
+                status: "Completed",
+              })
             );
           }}
         >
