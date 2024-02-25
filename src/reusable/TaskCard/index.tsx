@@ -1,12 +1,20 @@
 import React from "react";
 import styles from "./TaskCard.module.scss";
 import formatter from "../../utils/formatter";
-import { Task, taskAction } from "../../state/slice/taskListSlice";
-import { useDispatch } from "react-redux";
-import { AppDispatch } from "../../state/store";
+import { taskService } from "../../services/taskService";
+import { Task } from "../../interface/taskInterface";
 
 const TaskCard = ({ task }: { task: Task }) => {
-  const dispatch = useDispatch<AppDispatch>();
+  const handleUpdateTask = () => {
+    taskService.updateTask({
+      date: Date.now(),
+      description: "Description",
+      name: "Name",
+      status: "Completed",
+      taskId: "Wow",
+    });
+  };
+
   return (
     <div className={styles.taskCard}>
       <div className={styles.taskCard__header}>{task.name}</div>
@@ -20,14 +28,7 @@ const TaskCard = ({ task }: { task: Task }) => {
         <button
           type="button"
           className={styles.taskCard__button}
-          onClick={() => {
-            dispatch(
-              taskAction.updateStatus({
-                taskId: task.taskId,
-                status: "Completed",
-              })
-            );
-          }}
+          onClick={handleUpdateTask}
         >
           Mark as Completed
         </button>

@@ -2,9 +2,8 @@ import { motion } from "framer-motion";
 import React, { useState } from "react";
 import styles from "./AddTask.module.scss";
 import { IoMdClose } from "react-icons/io";
-import { useDispatch } from "react-redux";
-import { taskAction } from "../../state/slice/taskListSlice";
 import formStyles from "../../form.module.scss";
+import { taskService } from "../../services/taskService";
 const initialFormState = {
   name: {
     value: "",
@@ -16,11 +15,8 @@ const initialFormState = {
   },
 };
 const AddTask = () => {
-  const dispatch = useDispatch();
-
   const [formState, setFormState] = useState(initialFormState);
-
-  const handleFormDispatch = (payload) => {
+  const handleFormDispatch = (payload: Object) => {
     setFormState((formState) => ({
       ...formState,
       ...payload,
@@ -28,7 +24,7 @@ const AddTask = () => {
   };
 
   const onChange = {
-    name: (e) => {
+    name: (e: React.ChangeEvent<HTMLInputElement>) => {
       handleFormDispatch({
         name: {
           value: e.target.value,
@@ -37,7 +33,7 @@ const AddTask = () => {
         },
       });
     },
-    desc: (e) => {
+    desc: (e: React.ChangeEvent<HTMLInputElement>) => {
       handleFormDispatch({
         desc: {
           value: e.target.value,
@@ -68,21 +64,20 @@ const AddTask = () => {
         desc: {
           value: formState.desc.value,
           error:
-            formState.desc.valuelength < 2
+            formState.desc.value.length < 2
               ? "Please enter valid task description"
               : "",
         },
       });
       return;
     }
-    dispatch(
-      taskAction.addTask({
-        name: formState.name.value,
-        description: formState.desc.value,
-        date: new Date(),
-        status: "Pending",
-      })
-    );
+    taskService.addTask({
+      name: formState.name.value,
+      description: formState.desc.value,
+      date: Date.now(),
+      status: "Pending",
+      taskId: "Wow",
+    });
     handleFormDispatch(initialFormState);
     setOpen(false);
   };

@@ -1,6 +1,6 @@
 class Formatter {
-  date(date) {
-    let month = {
+  date(timeStamp) {
+    const month = {
       1: "Jan",
       2: "Feb",
       3: "Mar",
@@ -14,6 +14,8 @@ class Formatter {
       11: "Nov",
       12: "Dec",
     };
+    const date = new Date(timeStamp);
+
     const yyyy = date.getFullYear();
     let mm = date.getMonth() + 1;
     let dd = date.getDate();

@@ -1,13 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-export type sortDir = "ASC" | "DESC";
-export type sortBy = "Date" | "Name" | "Priority" | "Tag" | "";
-
-export interface Filter {
-  sortDir: sortDir;
-  sortBy: sortBy;
-  searchParamter: string;
-  searchBy: "Date" | "";
-}
+import { Filter, SortBy } from "../../interface/filterInterface";
 
 export interface Search {
   searchParamter: string;
@@ -32,7 +24,7 @@ export const filterSlice = createSlice({
       };
       return state;
     },
-    updateSortBy: (state, filter: PayloadAction<sortBy>) => {
+    updateSortBy: (state, filter: PayloadAction<SortBy>) => {
       state = {
         ...state,
         sortBy: filter.payload,

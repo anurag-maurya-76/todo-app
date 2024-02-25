@@ -8,6 +8,7 @@ import { RootState } from "../../state/store";
 
 const TaskList = () => {
   const taskList = useSelector((state: RootState) => state.taskList);
+
   return (
     <div className={styles.taskList}>
       <div className={styles.taskList__header}>
