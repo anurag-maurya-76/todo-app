@@ -49,7 +49,7 @@
 .react-calendar__navigation button {
   min-width: 44px;
   background: none;
-  color: $text-bright;
+  color: $textBright;
   font-weight: bold;
   font-size: 15px;
 }
@@ -60,7 +60,7 @@
 
 .react-calendar__navigation button:enabled:hover,
 .react-calendar__navigation button:enabled:focus {
-  color: $text-bright;
+  color: $textBright;
 }
 
 .react-calendar__month-view__weekdays {
@@ -77,7 +77,7 @@ abbr[title] {
 .react-calendar__month-view__weekdays__weekday {
   border: none;
   padding: 0.5em;
-  color: $text-bright;
+  color: $textBright;
   font-weight: bold;
   font-size: 17px;
 }
@@ -93,7 +93,7 @@ abbr[title] {
 .react-calendar__month-view__days__day--neighboringMonth,
 .react-calendar__decade-view__years__year--neighboringDecade,
 .react-calendar__century-view__decades__decade--neighboringCentury {
-  color: $text-bright;
+  color: $textBright;
 }
 
 .react-calendar__year-view .react-calendar__tile,
@@ -112,37 +112,28 @@ abbr[title] {
   font-size: 0.833em;
 }
 
-.react-calendar__tile:disabled {}
 
 .react-calendar__month-view__days__day {
-  color: $text-dull;
+  color: $textDull;
 }
 
 .react-calendar__month-view__days__day--neighboringMonth:disabled,
 .react-calendar__decade-view__years__year--neighboringDecade:disabled,
 .react-calendar__century-view__decades__decade--neighboringCentury:disabled {
-  color: $text-bright;
+  color: $textBright;
 }
 
 .react-calendar__tile:enabled:hover,
 .react-calendar__tile:enabled:focus {
   border-radius: 50%;
-  background-color: $light-grey;
-  color: $text-bright;
+  background-color: $lightGrey;
+  color: $textBright;
 }
-
-.react-calendar__tile--now {}
-
-.react-calendar__tile--now:enabled:hover,
-.react-calendar__tile--now:enabled:focus {}
 
 .react-calendar__tile--hasActive {
   color: $grey;
   background: $yellow;
 }
-
-.react-calendar__tile--hasActive:enabled:hover,
-.react-calendar__tile--hasActive:enabled:focus {}
 
 .react-calendar__tile--active {
   background: $yellow;

@@ -14,7 +14,7 @@ const Login = () => {
       <div className={styles.login__logo}></div>
       <div className={styles.login__div}>
         <form className={formStyles.form}>
-          <div className={styles.login__form__title}>TODO</div>
+          <div className={styles.login__title}>TODO</div>
           <label htmlFor="Username">Username</label>
           <input id={"Username"} type="text" />
           <label htmlFor="Password">Password</label>

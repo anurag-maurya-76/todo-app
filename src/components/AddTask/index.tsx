@@ -88,6 +88,10 @@ const AddTask = () => {
       className={styles.addTask}
       onClick={() => !open && setOpen(true)}
       style={{ cursor: open ? "" : "pointer" }}
+      initial={{
+        height: 50,
+        width: 150,
+      }}
       animate={{
         height: open ? 300 : 50,
         width: open ? "100%" : 150,
