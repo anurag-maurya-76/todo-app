@@ -1,5 +1,5 @@
 export type SortDir = "ASC" | "DESC";
-export type SortBy = "Date" | "Name" | "Priority" | "Tag" | "";
+export type SortBy = "Date" | "Name" | "Description" | "Status" | "";
 
 export interface Filter {
   sortDir: SortDir;

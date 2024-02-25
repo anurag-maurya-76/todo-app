@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./Dashboard.module.scss";
 import TaskMap from "../../components/TaskMap";
 import TaskCalendar from "../../components/TaskCalendar";

@@ -7,15 +7,30 @@ import "./calendar.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../state/store";
 import { filterAction } from "../../state/slice/filterSlice";
+import { SortBy } from "../../interface/filterInterface";
 
 const TaskCalendar = () => {
   const dispatch = useDispatch<AppDispatch>();
   const filterState = useSelector((state: RootState) => state.filter);
+  const handleUpdateSearch = (param: any) => {
+    return dispatch(
+      filterAction.updateSearch({
+        searchBy: "Date",
+        searchParameter: JSON.stringify(param),
+      })
+    );
+  };
+  const handleUpdateSortDir = () => {
+    return dispatch(filterAction.updateSortDir());
+  };
+  const handleUpdateSortBy = (sortBy: SortBy) => {
+    return dispatch(filterAction.updateSortBy(sortBy));
+  };
   return (
     <div className={styles.taskCalendar}>
       <Calendar
         className={"react-calendar"}
-        onChange={(value, event) => console.log(value)}
+        onChange={(value, event) => handleUpdateSearch(value)}
         formatShortWeekday={(locale, date) =>
           formatter.getDay(date.getUTCDay())
         }
@@ -25,44 +40,44 @@ const TaskCalendar = () => {
         {filterState.sortDir === "ASC" && (
           <IoIosArrowUp
             className={styles.taskCalendar__header__icon}
-            onClick={() => dispatch(filterAction.updateSortDir())}
+            onClick={handleUpdateSortDir}
           />
         )}
         {filterState.sortDir === "DESC" && (
           <IoIosArrowDown
             className={styles.taskCalendar__header__icon}
-            onClick={() => dispatch(filterAction.updateSortDir())}
+            onClick={handleUpdateSortDir}
           />
         )}
       </div>
       <div className={styles.taskCalendar__grid}>
         <Button
           className={styles.taskCalendar__button}
-          onClick={() => dispatch(filterAction.updateSortBy("Date"))}
+          onClick={() => handleUpdateSortBy("Date")}
         >
           Date
         </Button>
         <Button
           className={styles.taskCalendar__button}
-          onClick={() => dispatch(filterAction.updateSortBy("Name"))}
+          onClick={() => handleUpdateSortBy("Name")}
         >
           Name
         </Button>
         <Button
           className={styles.taskCalendar__button}
-          onClick={() => dispatch(filterAction.updateSortBy("Priority"))}
+          onClick={() => handleUpdateSortBy("Description")}
         >
-          Priority
+          Description
         </Button>
         <Button
           className={styles.taskCalendar__button}
-          onClick={() => dispatch(filterAction.updateSortBy("Tag"))}
+          onClick={() => handleUpdateSortBy("Status")}
         >
-          Tag
+          Status
         </Button>
         <Button
           className={styles.taskCalendar__clearButton}
-          onClick={() => dispatch(filterAction.updateSortBy(""))}
+          onClick={() => handleUpdateSortBy("")}
         >
           Clear
         </Button>

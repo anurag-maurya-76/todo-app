@@ -8,20 +8,21 @@ import { RootState } from "../../state/store";
 
 const TaskList = () => {
   const taskList = useSelector((state: RootState) => state.taskList);
+  const currentDate = formatter.date(Date.now()).formattedDate;
 
   return (
     <div className={styles.taskList}>
       <div className={styles.taskList__header}>
-        <div className={styles.taskList__header__date}>
-          {formatter.date(new Date()).formattedDate}
-        </div>
+        <div className={styles.taskList__header__date}>{currentDate}</div>
         <div className={styles.taskList__header__title}>{greeter()}</div>
         <div className={styles.taskList__header__subtitle}>
           What's your plan for today
         </div>
       </div>
-      <div className={styles.taskList__body}>
+      <div className={styles.taskList__addTask}>
         <AddTask />
+      </div>
+      <div className={styles.taskList__body}>
         {taskList.map((task, key) => {
           return <TaskCard task={task} key={key} />;
         })}

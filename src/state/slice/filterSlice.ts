@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Filter, SortBy } from "../../interface/filterInterface";
 
 export interface Search {
-  searchParamter: string;
+  searchParameter: string;
   searchBy: "Date" | "";
 }
 
@@ -35,7 +35,7 @@ export const filterSlice = createSlice({
       state = {
         ...state,
         searchBy: filter.payload.searchBy,
-        searchParamter: filter.payload.searchParamter,
+        searchParamter: filter.payload.searchParameter,
       };
       return state;
     },

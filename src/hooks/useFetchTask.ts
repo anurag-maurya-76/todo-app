@@ -24,7 +24,9 @@ export const useFetchTask = () => {
   }, [data, isLoading]);
 
   useEffect(() => {
-    if (data && isLoading === false) {
+    if (isLoading) {
+      dispatch(taskAction.updateTask([]));
+    } else if (data) {
       dispatch(taskAction.updateTask(data[selectedTaskMap]));
     }
   }, [selectedTaskMap, data, dispatch, isLoading]);
