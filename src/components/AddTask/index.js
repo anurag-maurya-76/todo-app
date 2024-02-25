@@ -4,6 +4,7 @@ import styles from "./AddTask.module.scss";
 import { IoMdClose } from "react-icons/io";
 import { useDispatch } from "react-redux";
 import { taskAction } from "../../state/slice/taskListSlice";
+import formStyles from "../../form.module.scss";
 const initialFormState = {
   name: {
     value: "",
@@ -75,10 +76,9 @@ const AddTask = () => {
       return;
     }
     dispatch(
-      taskAction.updateTask({
-        taskId: "1",
+      taskAction.addTask({
         name: formState.name.value,
-        desc: formState.desc.value,
+        description: formState.desc.value,
         date: new Date(),
         status: "Pending",
       })
@@ -111,7 +111,7 @@ const AddTask = () => {
             color="white"
             className={styles.icon}
           />
-          <form>
+          <form className={formStyles.form}>
             <label htmlFor="taskName">Task Name</label>
             <input
               id={"taskName"}
@@ -128,9 +128,13 @@ const AddTask = () => {
               onChange={onChange.desc}
             />
             <div className={styles.error}>{formState.desc.error}</div>
-            <div className={styles.submitBtn} onClick={handleSubmit}>
+            <button
+              type="button"
+              className={styles.submitBtn}
+              onClick={handleSubmit}
+            >
               Add Task
-            </div>
+            </button>
           </form>
         </motion.div>
       ) : (
