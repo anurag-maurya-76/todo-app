@@ -71,13 +71,13 @@ const AddTask = () => {
       });
       return;
     }
-    taskService.addTask({
-      name: formState.name.value,
-      description: formState.desc.value,
-      date: Date.now(),
-      status: "Pending",
-      taskId: "Wow",
-    });
+    // taskService.addTask({
+    //   name: formState.name.value,
+    //   description: formState.desc.value,
+    //   date: Date.now(),
+    //   status: "PENDING",
+    //   taskId: "Wow",
+    // });
     handleFormDispatch(initialFormState);
     setOpen(false);
   };

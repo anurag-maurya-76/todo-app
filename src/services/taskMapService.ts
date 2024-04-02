@@ -1,8 +1,8 @@
 import { axiosClient } from "../config/axios";
 import { Task } from "../interface/taskInterface";
 
-class TaskService {
-  async addTask(payload: Task) {
+class TaskMapService {
+  async addTaskMap(payload: Task) {
     const response = await axiosClient.post("/addTask", {
       taskName: payload.name,
       taskDescription: payload.description,
@@ -17,11 +17,9 @@ class TaskService {
       }, 1000);
     });
   }
-  async getTask() {
-    const response = await axiosClient.get(
-      "/getTaskList/1?sortBy=createdAt&sortDir=DESC"
-    );
+  async getTaskMap() {
+    const response = await axiosClient.get("/getTaskMap");
     return response;
   }
 }
-export const taskService = new TaskService();
+export const taskMapService = new TaskMapService();

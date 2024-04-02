@@ -7,13 +7,13 @@ import { MdModeEdit } from "react-icons/md";
 
 const TaskCard = ({ task }: { task: Task }) => {
   const handleUpdateTask = () => {
-    taskService.updateTask({
-      date: Date.now(),
-      description: "Description",
-      name: "Name",
-      status: "Completed",
-      taskId: "Wow",
-    });
+    // taskService.updateTask({
+    //   date: Date.now(),
+    //   description: "Description",
+    //   name: "Name",
+    //   status: "COMPLETED",
+    //   taskId: "Wow",
+    // });
   };
 
   return (

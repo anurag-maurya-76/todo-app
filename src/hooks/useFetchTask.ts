@@ -1,17 +1,17 @@
 import { useState, useEffect } from "react";
 import { useQuery } from "react-query";
 import { useDispatch, useSelector } from "react-redux";
-import { taskService } from "../services/taskService";
+import { taskMapService } from "../services/taskMapService";
 import { taskAction } from "../state/slice/taskListSlice";
 import { AppDispatch, RootState } from "../state/store";
 
 export const useFetchTask = () => {
   const payload = useSelector((state: RootState) => state.filter);
-  const [selectedTaskMap, setSelectedTaskMap] = useState("");
+  const [selectedTaskMapId, setSelectedTaskMapId] = useState("");
   const dispatch = useDispatch<AppDispatch>();
   const { data, isLoading } = useQuery<any>(
     ["getTask", payload],
-    async () => await taskService.getTask(payload),
+    async () => await taskMapService.getTaskMap(),
     {
       cacheTime: 300000,
     }
@@ -19,7 +19,7 @@ export const useFetchTask = () => {
 
   useEffect(() => {
     if (data && isLoading === false) {
-      setSelectedTaskMap(Object.keys(data)[0]);
+      setSelectedTaskMapId(data.data.responseBody[0].taskMapId);
     }
   }, [data, isLoading]);
 
@@ -27,14 +27,14 @@ export const useFetchTask = () => {
     if (isLoading) {
       dispatch(taskAction.updateTask([]));
     } else if (data) {
-      dispatch(taskAction.updateTask(data[selectedTaskMap]));
+      dispatch(taskAction.updateTask([]));
     }
-  }, [selectedTaskMap, data, dispatch, isLoading]);
+  }, [selectedTaskMapId, data, dispatch, isLoading]);
 
   return {
     data,
     isLoading,
-    selectedTaskMap,
-    setSelectedTaskMap,
+    selectedTaskMapId,
+    setSelectedTaskMapId,
   };
 };

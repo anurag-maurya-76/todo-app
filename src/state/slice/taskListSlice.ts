@@ -1,10 +1,10 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { Task } from "../../interface/taskInterface";
+import { Task, TaskStatus } from "../../interface/taskInterface";
 
 export interface AddTaskPayload {
   name: string;
   description: string;
-  status: "Pending" | "Completed" | "In Progress";
+  status: TaskStatus;
   date: string;
 }
 

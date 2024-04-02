@@ -8,7 +8,7 @@ import colors from "../../_export.scss";
 
 const TaskMap = () => {
   const navigate = useNavigate();
-  const { data, isLoading, selectedTaskMap, setSelectedTaskMap } =
+  const { data, isLoading, selectedTaskMapId, setSelectedTaskMapId } =
     useFetchTask();
   const handleLogout = () => {
     navigate("/");
@@ -25,7 +25,7 @@ const TaskMap = () => {
       <div className={styles.taskMap__list}>
         <div className={styles.taskMap__list__title}>My List</div>
         {!isLoading &&
-          Object.keys(data).map((taskMap, index) => {
+          data.data.responseBody.map((taskMap: any, index: number) => {
             return (
               <motion.div
                 className={styles.taskMap__list__button}
@@ -38,19 +38,21 @@ const TaskMap = () => {
                 animate={{
                   x: 0,
                   backgroundColor:
-                    taskMap === selectedTaskMap ? colors.yellow : colors.grey,
+                    taskMap.taskMapId === selectedTaskMapId
+                      ? colors.yellow
+                      : colors.grey,
                   color:
-                    taskMap === selectedTaskMap
+                    taskMap.taskMapId === selectedTaskMapId
                       ? colors.grey
                       : colors.textBright,
                 }}
                 transition={{
                   duration: 0.2,
                 }}
-                onClick={() => setSelectedTaskMap(taskMap)}
+                onClick={() => setSelectedTaskMapId(taskMap.taskMapId)}
               >
-                {taskMap}
-                {taskMap === selectedTaskMap && <IoMdClose size={22} />}
+                {taskMap.taskMapName}
+                {taskMap === selectedTaskMapId && <IoMdClose size={22} />}
               </motion.div>
             );
           })}
