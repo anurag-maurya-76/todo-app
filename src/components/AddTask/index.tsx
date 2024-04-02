@@ -4,6 +4,8 @@ import styles from "./AddTask.module.scss";
 import { IoMdClose } from "react-icons/io";
 import formStyles from "../../form.module.scss";
 import { taskService } from "../../services/taskService";
+import { useSelector } from "react-redux";
+import { RootState } from "../../state/store";
 const initialFormState = {
   name: {
     value: "",
@@ -16,6 +18,8 @@ const initialFormState = {
 };
 const AddTask = () => {
   const [formState, setFormState] = useState(initialFormState);
+
+  const filter = useSelector((state: RootState) => state.filter);
   const handleFormDispatch = (payload: Object) => {
     setFormState((formState) => ({
       ...formState,
@@ -71,13 +75,14 @@ const AddTask = () => {
       });
       return;
     }
-    // taskService.addTask({
-    //   name: formState.name.value,
-    //   description: formState.desc.value,
-    //   date: Date.now(),
-    //   status: "PENDING",
-    //   taskId: "Wow",
-    // });
+    taskService.addTask({
+      name: formState.name.value,
+      description: formState.desc.value,
+      date: Date.now(),
+      status: "PENDING",
+      taskId: "Wow",
+      taskMapId: filter.taskMapId,
+    });
     handleFormDispatch(initialFormState);
     setOpen(false);
   };

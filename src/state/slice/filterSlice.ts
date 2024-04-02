@@ -11,12 +11,20 @@ export const initialState: Filter = {
   sortBy: "",
   searchParamter: "",
   searchBy: "",
+  taskMapId: "",
 };
 
 export const filterSlice = createSlice({
   name: "filter",
   initialState: initialState,
   reducers: {
+    updateTaskMapId: (state, taskMapId: PayloadAction<String>) => {
+      state = {
+        ...state,
+        taskMapId: taskMapId.payload,
+      };
+      return state;
+    },
     updateSortDir: (state) => {
       state = {
         ...state,

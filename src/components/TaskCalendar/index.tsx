@@ -53,25 +53,25 @@ const TaskCalendar = () => {
       <div className={styles.taskCalendar__grid}>
         <Button
           className={styles.taskCalendar__button}
-          onClick={() => handleUpdateSortBy("Date")}
+          onClick={() => handleUpdateSortBy("createdAt")}
         >
           Date
         </Button>
         <Button
           className={styles.taskCalendar__button}
-          onClick={() => handleUpdateSortBy("Name")}
+          onClick={() => handleUpdateSortBy("taskName")}
         >
           Name
         </Button>
         <Button
           className={styles.taskCalendar__button}
-          onClick={() => handleUpdateSortBy("Description")}
+          onClick={() => handleUpdateSortBy("taskDescription")}
         >
           Description
         </Button>
         <Button
           className={styles.taskCalendar__button}
-          onClick={() => handleUpdateSortBy("Status")}
+          onClick={() => handleUpdateSortBy("taskStatus")}
         >
           Status
         </Button>

@@ -1,4 +1,5 @@
 import { axiosClient } from "../config/axios";
+import { Filter } from "../interface/filterInterface";
 import { Task } from "../interface/taskInterface";
 
 class TaskService {
@@ -9,6 +10,7 @@ class TaskService {
       taskStatus: payload.status,
       taskMapId: payload.taskMapId,
     });
+    return response;
   }
   updateTask(payload: Task) {
     return new Promise((resolve) => {
@@ -17,9 +19,9 @@ class TaskService {
       }, 1000);
     });
   }
-  async getTask() {
+  async getTask(payload: Filter) {
     const response = await axiosClient.get(
-      "/getTaskList/1?sortBy=createdAt&sortDir=DESC"
+      `/getTaskList/${payload.taskMapId}?sortBy=${payload.sortBy}&sortDir=${payload.sortDir}`
     );
     return response;
   }

@@ -1,15 +1,19 @@
 import styles from "./TaskMap.module.scss";
 import { IoMdClose } from "react-icons/io";
-import { useFetchTask } from "../../hooks/useFetchTask";
+import { useFetchTaskMap } from "../../hooks/useFetchTaskMap";
 import { motion } from "framer-motion";
 import { FiLogOut } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
 import colors from "../../_export.scss";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../../state/store";
+import { filterAction } from "../../state/slice/filterSlice";
 
 const TaskMap = () => {
+  const filter = useSelector((state: RootState) => state.filter);
+  const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
-  const { data, isLoading, selectedTaskMapId, setSelectedTaskMapId } =
-    useFetchTask();
+  const { data, isLoading } = useFetchTaskMap();
   const handleLogout = () => {
     navigate("/");
   };
@@ -38,21 +42,25 @@ const TaskMap = () => {
                 animate={{
                   x: 0,
                   backgroundColor:
-                    taskMap.taskMapId === selectedTaskMapId
+                    taskMap.taskMapId === filter.taskMapId
                       ? colors.yellow
                       : colors.grey,
                   color:
-                    taskMap.taskMapId === selectedTaskMapId
+                    taskMap.taskMapId === filter.taskMapId
                       ? colors.grey
                       : colors.textBright,
                 }}
                 transition={{
                   duration: 0.2,
                 }}
-                onClick={() => setSelectedTaskMapId(taskMap.taskMapId)}
+                onClick={() =>
+                  dispatch(filterAction.updateTaskMapId(taskMap.taskMapId))
+                }
               >
                 {taskMap.taskMapName}
-                {taskMap === selectedTaskMapId && <IoMdClose size={22} />}
+                {taskMap.taskMapId === filter.taskMapId && (
+                  <IoMdClose size={22} />
+                )}
               </motion.div>
             );
           })}

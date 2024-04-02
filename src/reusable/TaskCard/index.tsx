@@ -26,9 +26,7 @@ const TaskCard = ({ task }: { task: Task }) => {
         />
       </div>
       <div className={styles.taskCard__description}>{task.description}</div>
-      <div className={styles.taskCard__dueDate}>
-        {formatter.date(task.date).formattedDate}
-      </div>
+      <div className={styles.taskCard__dueDate}>{task.date}</div>
       <div className={styles.taskCard__footer}>
         <div className={styles.taskCard__footer__status}>{task.status}</div>
         <div className={styles.taskCard__footer__actions}></div>
