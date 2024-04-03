@@ -47,6 +47,15 @@ export const filterSlice = createSlice({
       };
       return state;
     },
+    resetFilter: (state) => {
+      return {
+        ...state,
+        sortDir: "ASC",
+        sortBy: "",
+        searchParamter: "",
+        searchBy: "",
+      };
+    },
   },
 });
 export const filterAction = filterSlice.actions;

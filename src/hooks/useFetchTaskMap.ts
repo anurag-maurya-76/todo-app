@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useQuery } from "react-query";
 import { useDispatch, useSelector } from "react-redux";
 import { taskMapService } from "../services/taskMapService";
@@ -8,6 +8,7 @@ import { AppDispatch, RootState } from "../state/store";
 
 export const useFetchTaskMap = () => {
   const dispatch = useDispatch<AppDispatch>();
+  const filter = useSelector((state: RootState) => state.filter);
   const { data, isLoading } = useQuery<any>(
     ["getTask"],
     async () => await taskMapService.getTaskMap(),
@@ -18,9 +19,11 @@ export const useFetchTaskMap = () => {
 
   useEffect(() => {
     if (data && isLoading === false) {
-      dispatch(
-        filterAction.updateTaskMapId(data?.data?.responseBody[0]?.taskMapId)
-      );
+      if (filter.taskMapId === "") {
+        dispatch(
+          filterAction.updateTaskMapId(data?.data?.responseBody[0]?.taskMapId)
+        );
+      }
     }
   }, [data, dispatch, isLoading]);
 

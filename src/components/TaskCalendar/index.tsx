@@ -16,7 +16,7 @@ const TaskCalendar = () => {
     return dispatch(
       filterAction.updateSearch({
         searchBy: "Date",
-        searchParameter: JSON.stringify(param),
+        searchParameter: JSON.stringify(param).split("T")[0].split('"')[1],
       })
     );
   };
@@ -77,7 +77,7 @@ const TaskCalendar = () => {
         </Button>
         <Button
           className={styles.taskCalendar__clearButton}
-          onClick={() => handleUpdateSortBy("")}
+          onClick={() => dispatch(filterAction.resetFilter())}
         >
           Clear
         </Button>

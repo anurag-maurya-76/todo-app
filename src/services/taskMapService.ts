@@ -2,13 +2,11 @@ import { axiosClient } from "../config/axios";
 import { Task } from "../interface/taskInterface";
 
 class TaskMapService {
-  async addTaskMap(payload: Task) {
-    const response = await axiosClient.post("/addTask", {
-      taskName: payload.name,
-      taskDescription: payload.description,
-      taskStatus: payload.status,
-      taskMapId: payload.taskMapId,
+  async addTaskMap(payload: String) {
+    const response = await axiosClient.post("/addTaskMap", {
+      taskMapName: payload,
     });
+    return response;
   }
   updateTask(payload: Task) {
     return new Promise((resolve) => {

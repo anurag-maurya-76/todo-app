@@ -12,16 +12,15 @@ class TaskService {
     });
     return response;
   }
-  updateTask(payload: Task) {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve(true);
-      }, 1000);
+  async updateTask(payload: Task) {
+    const response = await axiosClient.post(`/updateTask/${payload.taskId}`, {
+      taskStatus: payload.status,
     });
+    return response;
   }
   async getTask(payload: Filter) {
     const response = await axiosClient.get(
-      `/getTaskList/${payload.taskMapId}?sortBy=${payload.sortBy}&sortDir=${payload.sortDir}`
+      `/getTaskList/${payload.taskMapId}?sortBy=${payload.sortBy}&sortDir=${payload.sortDir}&searchBy=${payload.searchBy}&searchParameter=${payload.searchParamter}`
     );
     return response;
   }

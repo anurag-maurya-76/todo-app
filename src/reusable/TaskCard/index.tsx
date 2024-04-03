@@ -1,19 +1,20 @@
-import React from "react";
 import styles from "./TaskCard.module.scss";
-import formatter from "../../utils/formatter";
-import { taskService } from "../../services/taskService";
 import { Task } from "../../interface/taskInterface";
 import { MdModeEdit } from "react-icons/md";
+import { taskService } from "../../services/taskService";
+import { queryClient } from "../../App";
 
 const TaskCard = ({ task }: { task: Task }) => {
-  const handleUpdateTask = () => {
-    // taskService.updateTask({
-    //   date: Date.now(),
-    //   description: "Description",
-    //   name: "Name",
-    //   status: "COMPLETED",
-    //   taskId: "Wow",
-    // });
+  const handleUpdateTask = async () => {
+    await taskService.updateTask({
+      date: Date.now(),
+      description: task.description,
+      name: task.name,
+      status: "COMPLETED",
+      taskId: task.taskId,
+      taskMapId: task.taskMapId,
+    });
+    queryClient.invalidateQueries();
   };
 
   return (

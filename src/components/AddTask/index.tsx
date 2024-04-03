@@ -6,6 +6,7 @@ import formStyles from "../../form.module.scss";
 import { taskService } from "../../services/taskService";
 import { useSelector } from "react-redux";
 import { RootState } from "../../state/store";
+import { queryClient } from "../../App";
 const initialFormState = {
   name: {
     value: "",
@@ -50,7 +51,7 @@ const AddTask = () => {
     },
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (formState.name.value.length < 2) {
       handleFormDispatch({
         name: {
@@ -75,7 +76,7 @@ const AddTask = () => {
       });
       return;
     }
-    taskService.addTask({
+    await taskService.addTask({
       name: formState.name.value,
       description: formState.desc.value,
       date: Date.now(),
@@ -83,6 +84,8 @@ const AddTask = () => {
       taskId: "Wow",
       taskMapId: filter.taskMapId,
     });
+
+    queryClient.invalidateQueries();
     handleFormDispatch(initialFormState);
     setOpen(false);
   };

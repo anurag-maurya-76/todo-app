@@ -3,11 +3,8 @@ import TaskCard from "../../reusable/TaskCard";
 import AddTask from "../AddTask";
 import formatter from "../../utils/formatter";
 import { greeter } from "../../utils/greeter";
-import { useSelector } from "react-redux";
-import { RootState } from "../../state/store";
 import { motion } from "framer-motion";
 import { useFetchTaskList } from "../../hooks/useFetchTaskList";
-import { useEffect } from "react";
 
 const TaskList = () => {
   const { taskList, isLoading } = useFetchTaskList();
