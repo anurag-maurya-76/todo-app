@@ -1,8 +1,32 @@
+@import "../../variables.scss";
+
 .taskCard {
    background-color: #252525;
    border-radius: 8px;
    padding: 20px;
    width: 100%;
+
+   &__input {
+      border: 1px solid #555;
+      border-radius: 4px;
+      padding: 8px 12px;
+      font-size: 16px;
+      color: #fff; // Text color for dark theme
+      background-color: #333; // Background color for dark theme
+      transition: border-color 0.3s ease, background-color 0.3s ease;
+
+      &:focus {
+         outline: none;
+         border-color: $yellow; // Adjust focus border color for dark theme
+         box-shadow: 0 0 0 2px $yellow;
+      }
+
+   }
+
+   &__error {
+      color: red;
+      font-size: 14px;
+   }
 
    &__header {
       display: flex;
@@ -27,6 +51,7 @@
       font-size: 16px;
       color: #666666;
       margin-bottom: 10px;
+
    }
 
    &__dueDate {

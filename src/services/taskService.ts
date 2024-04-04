@@ -14,6 +14,8 @@ class TaskService {
   }
   async updateTask(payload: Task) {
     const response = await axiosClient.post(`/updateTask/${payload.taskId}`, {
+      taskName: payload.name,
+      taskDescription: payload.description,
       taskStatus: payload.status,
     });
     return response;

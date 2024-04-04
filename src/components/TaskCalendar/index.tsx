@@ -13,10 +13,19 @@ const TaskCalendar = () => {
   const dispatch = useDispatch<AppDispatch>();
   const filterState = useSelector((state: RootState) => state.filter);
   const handleUpdateSearch = (param: any) => {
+    const date = JSON.stringify(param).split("T")[0].split('"')[1];
+    const dateList = date.split("-");
+    const selectedDate = parseInt(dateList[2]) + 1;
+    const actualDate =
+      dateList[0] +
+      "-" +
+      dateList[1] +
+      "-" +
+      (selectedDate < 10 ? "0" + selectedDate : selectedDate);
     return dispatch(
       filterAction.updateSearch({
         searchBy: "Date",
-        searchParameter: JSON.stringify(param).split("T")[0].split('"')[1],
+        searchParameter: actualDate,
       })
     );
   };

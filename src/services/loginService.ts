@@ -9,9 +9,9 @@ const loginClient = axios.create({
   },
 });
 class LoginService {
-  async login(payload: { username: string; password: string }) {
+  async login(payload: { email: string; password: string }) {
     const base64encodedData = Buffer.from(
-      `${payload.username}:${payload.password}`
+      `${payload.email}:${payload.password}`
     ).toString("base64");
     const response = await loginClient.get(`/user`, {
       withCredentials: true,
@@ -27,12 +27,10 @@ class LoginService {
     }
     return response;
   }
-  register(payload: { username: string; password: string }) {
+  register(payload: { email: string; password: string }) {
     const response = loginClient.post(`/createUser`, {
-      userName: payload.username,
-      enabled: true,
       password: payload.password,
-      email: payload.username,
+      email: payload.email,
     });
     return response;
   }

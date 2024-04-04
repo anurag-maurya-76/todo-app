@@ -16,8 +16,8 @@
 
       &:focus {
          outline: none;
-         border-color: #007bff; // Adjust focus border color for dark theme
-         box-shadow: 0 0 0 2px lighten(#007bff, 20%);
+         border-color: $yellow; // Adjust focus border color for dark theme
+         box-shadow: 0 0 0 2px $yellow;
       }
 
    }

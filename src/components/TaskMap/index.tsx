@@ -1,4 +1,3 @@
-import { IoMdClose } from "react-icons/io";
 import { useFetchTaskMap } from "../../hooks/useFetchTaskMap";
 import { motion } from "framer-motion";
 import { FiLogOut } from "react-icons/fi";
@@ -85,9 +84,9 @@ const TaskMap = () => {
                 }
               >
                 {taskMap.taskMapName}
-                {taskMap.taskMapId === filter.taskMapId && (
+                {/* {taskMap.taskMapId === filter.taskMapId && (
                   <IoMdClose size={20} />
-                )}
+                )} */}
               </motion.div>
             );
           })}
